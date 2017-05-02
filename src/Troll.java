@@ -66,8 +66,8 @@ public class Troll {
                 if (woolies.size() != 1) {
                     //get two random woolies and remove them from the list
                     Woolie first = randomWoolie();
-                    Woolie second = randomWoolie();
                     woolies.remove(first);
+                    Woolie second = randomWoolie();
                     woolies.remove(second);
 
                     //create a new thread with the random two woolies, and try to run it

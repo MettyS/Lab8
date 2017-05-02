@@ -63,7 +63,12 @@ public class Woolie {
      * @param params
      */
     public Woolie(String[] params){
-
+        this.name = params[0];
+        this.minAtk = Integer.parseInt(params[1]);
+        this.maxAtk = Integer.parseInt(params[2]);
+        this.hitTime = Integer.parseInt(params[3]);
+        this.maxHP = Integer.parseInt(params[4]);
+        this.currHP = maxHP;
     }
 
     /**
