@@ -6,10 +6,13 @@ import java.util.ArrayList;
 public class Troll {
 
     public static int seed;
+    private ArrayList<Woolie> woolies;
 
-    public Troll(ArrayList<Woolie> woolies,
-                 SportsComplex sportsComplex){
+    private SportsComplex sportsComplex;
 
+    public Troll(ArrayList<Woolie> woolies, SportsComplex sportsComplex){
+        this.woolies = woolies;
+        this.sportsComplex = sportsComplex;
     }
 
     public void beginBattleRoyale(){

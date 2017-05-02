@@ -7,9 +7,7 @@ public class WoolieBattleThread extends Thread {
     private Woolie fighter2;
     private SportsComplex sportsComplex;
 
-    public WoolieBattleThread(Woolie fighter1,
-                              Woolie fighter2,
-                              SportsComplex sportsComplex){
+    public WoolieBattleThread(Woolie fighter1, Woolie fighter2, SportsComplex sportsComplex){
         this.fighter1 = fighter1;
         this.fighter2 = fighter2;
         this.sportsComplex = sportsComplex;
@@ -28,7 +26,12 @@ public class WoolieBattleThread extends Thread {
     }
 
     public Woolie getWinner(){
-        return null;
+        if(fighter1.getCurrentHP() == 0)
+            return fighter2;
+        else if(fighter2.getCurrentHP() == 0)
+            return fighter1;
+        else
+            return null;
     }
 
     public void enterArena(){

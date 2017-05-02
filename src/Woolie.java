@@ -11,11 +11,8 @@ public class Woolie {
     private int currHP;
     private int maxHP;
 
-    public Woolie(String name,
-                  int minAtk,
-                  int maxAtk,
-                  int hitTime,
-                  int maxHP){
+    public Woolie(String name, int minAtk, int maxAtk, int hitTime, int maxHP){
+
         this.name = name;
         this.minAtk = minAtk;
         this.maxAtk = maxAtk;
