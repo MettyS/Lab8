@@ -69,4 +69,8 @@ public class SportsComplex {
             }
         }
     }
+
+    public ArrayList<WoolieBattleThread> getThreadsToRun(){
+        return threadsToRun;
+    }
 }

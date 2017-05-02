@@ -50,11 +50,15 @@ public class WoolieBattleThread extends Thread {
      * Method to run the actions of this thread
      */
     public void run(){
+        System.out.println("WOOLIES: "+fighter1.getName()+" and "+fighter2.getName()+" enterArena line to battle");
         enterArena();
         int time = 0;
 
+        System.out.println("WOOLIES: "+fighter1.getName()+" and "+fighter2.getName()+" enterArena arena to battle");
+        System.out.println("The battle has begun between "+fighter1.getName()+" and "+fighter2.getName());
 
         while(getWinner() == null){
+
             //sleep the thread for a second to make it realistic to the writeup
             try {
                 this.sleep(1000);
@@ -78,7 +82,9 @@ public class WoolieBattleThread extends Thread {
                 fighter1.takeDamage(dmg);
                 System.out.println(fighter1.getName()+" has "+fighter1.getCurrentHP()+ " HP left");
             }
+            System.out.println();
         }
+        System.out.println("The results are in!");
         System.out.println(getWinner().getName()+" has won!");
         exitArena();
     }
