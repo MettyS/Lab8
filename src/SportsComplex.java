@@ -70,6 +70,10 @@ public class SportsComplex {
         }
     }
 
+    /**
+     * Getter for the list of threads trying to use the sportsComplex
+     * @return
+     */
     public ArrayList<WoolieBattleThread> getThreadsToRun(){
         return threadsToRun;
     }

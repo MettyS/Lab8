@@ -18,6 +18,9 @@ public class WoolieBattleThread extends Thread {
      */
     private SportsComplex sportsComplex;
 
+    /**
+     * the winner of the match, initialized to null
+     */
     private Woolie winner;
 
     /**
@@ -49,10 +52,6 @@ public class WoolieBattleThread extends Thread {
         return fighter2;
     }
 
-//    public void start(){
-//
-//    }
-
     /**
      * Method to run the actions of this thread
      */
@@ -73,7 +72,6 @@ public class WoolieBattleThread extends Thread {
             //}
             //catch the exception if the sleep is interrupted
             //catch(InterruptedException i){
-
             //}
 
             //evaluate who's turn it is and deal damage
@@ -101,6 +99,10 @@ public class WoolieBattleThread extends Thread {
         exitArena();
     }
 
+    /**
+     * Getter to get the stored value of the winner of the match
+     * @return
+     */
     public Woolie getTheWinner(){
         return winner;
     }

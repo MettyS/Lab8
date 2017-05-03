@@ -50,8 +50,10 @@ public class Troll {
      * Method to run matches until there is a single victor
      */
     public void beginBattleRoyale(){
+
         //loop while there is more than a single victor woolie
         while(woolies.size()!= 1) {
+
             //print the information of woolies going into this round
             System.out.println("Round "+ String.valueOf(roundNum)+" is about to begin!");
             System.out.println("The contestants for this round are:");
@@ -67,6 +69,7 @@ public class Troll {
 
             while (!woolies.isEmpty()) {
                 if (woolies.size() > 1) {
+
                     //get two random woolies and remove them from the list
                     Woolie first = randomWoolie();
                     woolies.remove(first);
