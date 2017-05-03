@@ -131,8 +131,7 @@ public class Woolie {
      * @return
      */
     public String toString(){
-        String returned = "";
-
+        String returned = name+": Max HP "+maxHP+", Min Attack "+minAtk+", Max Attack "+maxAtk+", Hit Time "+hitTime;
         return returned;
     }
 }

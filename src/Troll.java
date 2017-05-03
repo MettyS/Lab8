@@ -60,10 +60,11 @@ public class Troll {
             }
             System.out.println();
 
-
+            ArrayList<WoolieBattleThread> threads = new ArrayList<>();
             ArrayList<Woolie> winners = new ArrayList<>();
+            boolean silly = false;
             while (!woolies.isEmpty()) {
-                if (woolies.size() != 1) {
+                if (woolies.size() > 1) {
                     //get two random woolies and remove them from the list
                     Woolie first = randomWoolie();
                     woolies.remove(first);
@@ -72,15 +73,40 @@ public class Troll {
 
                     //create a new thread with the random two woolies, and try to run it
                     WoolieBattleThread thread = new WoolieBattleThread(first, second, sportsComplex);
-                    thread.run();
+                    threads.add(thread);
+                    thread.start();
+
                 }
                 //if there's an odd woolie, it gets a 'by' for the round
-                else
+                else {
                     winners.add(woolies.get(0));
+                    silly = true;
+                }
             }
+            //System.out.println("THREADS: "+threads.size());
+            //System.out.println("WINNERS: "+winners.size());
 
             //wait until threads have finished running
-            while(!sportsComplex.getThreadsToRun().isEmpty()){}
+            if(silly){
+                //System.out.println("SILLY");
+                while(winners.size() <= threads.size()){
+                    for(WoolieBattleThread t: threads){
+                        Woolie w = t.getTheWinner();
+                        if(w != null && !winners.contains(w))
+                            winners.add(w);
+                    }
+                }
+            }
+            else{
+                //System.out.println("NOT SILLY");
+                while(winners.size() < threads.size()){
+                    for(WoolieBattleThread t: threads){
+                        Woolie w = t.getTheWinner();
+                        if(w != null && !winners.contains(w))
+                            winners.add(w);
+                    }
+                }
+            }
 
             //reset the woolies to be the remaining woolies
             woolies = winners;
@@ -89,10 +115,15 @@ public class Troll {
             System.out.println("Round "+ String.valueOf(roundNum)+" is now over!");
             System.out.println("The contestants left after this round are:");
             for(Woolie w : woolies){
-                System.out.println("\t"+ w.toString());
+                //System.out.println("GOES INSIDE THE LOOP BEFORE STATEMENT");
+                System.out.println("\t" +w.toString());
+                //System.out.println("GOES INSIDE THE LOOP AFTER STATEMENT");
             }
+            //System.out.println("GOES AFTER THE LOOP");
             System.out.println();
 
+            if(roundNum > 50)
+                break;
             //increment round number
             roundNum++;
         }

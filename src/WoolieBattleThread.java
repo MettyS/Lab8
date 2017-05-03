@@ -18,6 +18,8 @@ public class WoolieBattleThread extends Thread {
      */
     private SportsComplex sportsComplex;
 
+    private Woolie winner;
+
     /**
      * Construct a new WoolieBattleThread
      * @param fighter1
@@ -28,6 +30,7 @@ public class WoolieBattleThread extends Thread {
         this.fighter1 = fighter1;
         this.fighter2 = fighter2;
         this.sportsComplex = sportsComplex;
+        winner = null;
     }
 
     /**
@@ -46,12 +49,16 @@ public class WoolieBattleThread extends Thread {
         return fighter2;
     }
 
+    public void start(){
+        System.out.println("WOOLIES: "+fighter1.getName()+" and "+fighter2.getName()+" enterArena line to battle");
+        enterArena();
+    }
+
     /**
      * Method to run the actions of this thread
      */
     public void run(){
-        System.out.println("WOOLIES: "+fighter1.getName()+" and "+fighter2.getName()+" enterArena line to battle");
-        enterArena();
+
         int time = 0;
 
         System.out.println("WOOLIES: "+fighter1.getName()+" and "+fighter2.getName()+" enterArena arena to battle");
@@ -60,14 +67,14 @@ public class WoolieBattleThread extends Thread {
         while(getWinner() == null){
 
             //sleep the thread for a second to make it realistic to the writeup
-            try {
-                this.sleep(1000);
+            //try {
+                //this.sleep(1000);
                 time++;
-            }
+            //}
             //catch the exception if the sleep is interrupted
-            catch(InterruptedException i){
+            //catch(InterruptedException i){
 
-            }
+            //}
 
             //evaluate who's turn it is and deal damage
             if(time % fighter1.getHitTime() == 0){
@@ -75,18 +82,27 @@ public class WoolieBattleThread extends Thread {
                 System.out.println(fighter1.getName()+" does "+ String.valueOf(dmg)+" damage to "+fighter2.getName());
                 fighter2.takeDamage(dmg);
                 System.out.println(fighter2.getName()+" has "+fighter2.getCurrentHP()+ " HP left");
+                System.out.println();
             }
             else if(time % fighter2.getHitTime() == 0){
                 int dmg = fighter2.getAttackAmount();
                 System.out.println(fighter2.getName()+" does "+ String.valueOf(dmg)+" damage to "+fighter1.getName());
                 fighter1.takeDamage(dmg);
                 System.out.println(fighter1.getName()+" has "+fighter1.getCurrentHP()+ " HP left");
+                System.out.println();
             }
-            System.out.println();
+
         }
         System.out.println("The results are in!");
+        winner = getWinner();
         System.out.println(getWinner().getName()+" has won!");
+        fighter1.reset();
+        fighter2.reset();
         exitArena();
+    }
+
+    public Woolie getTheWinner(){
+        return winner;
     }
 
     /**
@@ -94,9 +110,9 @@ public class WoolieBattleThread extends Thread {
      * @return
      */
     public Woolie getWinner(){
-        if(fighter1.getCurrentHP() == 0)
+        if(fighter1.getCurrentHP() <= 0)
             return fighter2;
-        else if(fighter2.getCurrentHP() == 0)
+        else if(fighter2.getCurrentHP() <= 0)
             return fighter1;
         else
             return null;
