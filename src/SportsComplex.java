@@ -39,7 +39,7 @@ public class SportsComplex {
         //if there are still empty arenas, allow the thread to run
         if(inUse < maxInUse){
             inUse++;
-            t.run();
+            //t.run();
         }
         //if there are no open arenas, set the thread to wait and add it to the list of waiting threads
         else{

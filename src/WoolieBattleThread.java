@@ -49,16 +49,16 @@ public class WoolieBattleThread extends Thread {
         return fighter2;
     }
 
-    public void start(){
-        System.out.println("WOOLIES: "+fighter1.getName()+" and "+fighter2.getName()+" enterArena line to battle");
-        enterArena();
-    }
+//    public void start(){
+//
+//    }
 
     /**
      * Method to run the actions of this thread
      */
     public void run(){
-
+        System.out.println("WOOLIES: "+fighter1.getName()+" and "+fighter2.getName()+" enterArena line to battle");
+        enterArena();
         int time = 0;
 
         System.out.println("WOOLIES: "+fighter1.getName()+" and "+fighter2.getName()+" enterArena arena to battle");
